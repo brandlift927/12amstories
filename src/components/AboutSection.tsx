@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import interiorImg from "@/assets/bakery-interior.jpg";
+import interiorImg from "@/assets/our-story.jpg";
 
 const AboutSection = () => {
   const ref = useRef<HTMLDivElement>(null);
