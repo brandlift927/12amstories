@@ -5,39 +5,52 @@ const ContactSection = () => (
     <div className="container">
       <div className="text-center mb-14">
         <p className="text-accent font-body text-xs tracking-[0.25em] uppercase mb-3">Find Us</p>
-        <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">Location & Contact</h2>
+        <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+          Location &amp; Contact
+        </h2>
       </div>
 
       <div className="grid md:grid-cols-2 gap-10 items-start">
-        {/* Info */}
+        {/* Contact Info */}
         <div className="space-y-6">
           <div className="flex items-start gap-4">
-            <MapPin className="text-accent mt-1 shrink-0" size={20} />
+            <MapPin className="text-accent mt-1 shrink-0" size={20} aria-hidden="true" />
             <div>
               <h4 className="font-heading font-semibold text-foreground mb-1">Address</h4>
-              <p className="text-muted-foreground text-sm">Choudhary Heights, I 20, Warje Malwadi Rd, Giridhar Nagar, Warje, Pune, Maharashtra 411058</p>
+              <p className="text-muted-foreground text-sm">
+                Choudhary Heights, I 20, Warje Malwadi Rd, Giridhar Nagar, Warje, Pune, Maharashtra 411058
+              </p>
             </div>
           </div>
+
           <div className="flex items-start gap-4">
-            <Phone className="text-accent mt-1 shrink-0" size={20} />
+            <Phone className="text-accent mt-1 shrink-0" size={20} aria-hidden="true" />
             <div>
               <h4 className="font-heading font-semibold text-foreground mb-1">Phone</h4>
-              <a href="tel:+919082672306" className="text-muted-foreground text-sm hover:text-accent transition-colors">
+              <a
+                href="tel:+919082672306"
+                className="text-muted-foreground text-sm hover:text-accent transition-colors"
+              >
                 090826 72306
               </a>
             </div>
           </div>
+
           <div className="flex items-start gap-4">
-            <Mail className="text-accent mt-1 shrink-0" size={20} />
+            <Mail className="text-accent mt-1 shrink-0" size={20} aria-hidden="true" />
             <div>
               <h4 className="font-heading font-semibold text-foreground mb-1">Email</h4>
-              <a href="mailto:hello@12amstories.com" className="text-muted-foreground text-sm hover:text-accent transition-colors">
+              <a
+                href="mailto:hello@12amstories.com"
+                className="text-muted-foreground text-sm hover:text-accent transition-colors"
+              >
                 hello@12amstories.com
               </a>
             </div>
           </div>
+
           <div className="flex items-start gap-4">
-            <Clock className="text-accent mt-1 shrink-0" size={20} />
+            <Clock className="text-accent mt-1 shrink-0" size={20} aria-hidden="true" />
             <div>
               <h4 className="font-heading font-semibold text-foreground mb-1">Hours</h4>
               <p className="text-muted-foreground text-sm">Mon – Sun: Open till 12:00 AM</p>
@@ -45,7 +58,7 @@ const ContactSection = () => (
           </div>
         </div>
 
-        {/* Map */}
+        {/* Map – lazy loaded so it doesn't block page render */}
         <div className="rounded-lg overflow-hidden shadow-lg h-[350px]">
           <iframe
             title="12AM Stories Location"

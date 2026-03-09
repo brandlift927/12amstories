@@ -6,13 +6,18 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      {/* Background image – eager + fetchpriority for LCP */}
       <img
         src={heroImg}
         alt="Premium cake from 12AM Stories bakery"
         className="absolute inset-0 w-full h-full object-cover"
         loading="eager"
+        fetchPriority="high"
+        decoding="async"
       />
       <div className="absolute inset-0 bg-hero-overlay" />
 
@@ -25,7 +30,7 @@ const HeroSection = () => {
           12AM Stories
         </h1>
         <p className="text-gold-light font-heading text-lg md:text-xl italic mb-2">
-          Fresh Bakes & Sweet Tales
+          Fresh Bakes &amp; Sweet Tales
         </p>
         <p className="text-primary-foreground/70 text-sm md:text-base mb-8 max-w-md mx-auto">
           Midnight cravings? We bake happiness daily.
@@ -39,7 +44,7 @@ const HeroSection = () => {
             🍰 View Menu
           </button>
           <a
-            href="https://wa.me/91XXXXXXXXXX?text=Hi%2012AM%20Stories,%20I%20want%20to%20order."
+            href="https://wa.me/919082672306?text=Hi%2012AM%20Stories,%20I%20want%20to%20order."
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-3 rounded-full border border-primary-foreground/30 text-primary-foreground font-medium text-sm tracking-wide hover:bg-primary-foreground/10 transition-all"

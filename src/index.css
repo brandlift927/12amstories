@@ -62,7 +62,12 @@
     @apply bg-background text-foreground font-body antialiased;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-heading;
   }
 }
@@ -81,12 +86,16 @@
 
   .whatsapp-pulse {
     animation: whatsapp-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    will-change: box-shadow;
   }
 
   @keyframes whatsapp-pulse {
-    0%, 100% {
+
+    0%,
+    100% {
       box-shadow: 0 0 0 0 hsla(142, 70%, 49%, 0.5);
     }
+
     50% {
       box-shadow: 0 0 0 12px hsla(142, 70%, 49%, 0);
     }
@@ -95,6 +104,7 @@
   .fade-up {
     animation: fadeUp 0.6s ease-out forwards;
     opacity: 0;
+    will-change: transform, opacity;
   }
 
   @keyframes fadeUp {
@@ -102,6 +112,7 @@
       opacity: 0;
       transform: translateY(24px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -110,5 +121,22 @@
 
   .menu-card-hover:hover img {
     transform: scale(1.08);
+  }
+
+  /* Respect user's motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .fade-up {
+      animation: none;
+      opacity: 1;
+    }
+
+    .whatsapp-pulse {
+      animation: none;
+    }
+
+    .menu-card-hover:hover img,
+    .hover\:scale-105:hover {
+      transform: none;
+    }
   }
 }

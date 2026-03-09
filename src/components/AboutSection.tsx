@@ -1,19 +1,25 @@
 import { useEffect, useRef } from "react";
-import interiorImg from "@/assets/our-story.jpg";
+import interiorImg from "@/assets/12am-story.jpg";
 
 const AboutSection = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("fade-up");
+          // Unobserve once triggered – animation only plays once
+          observer.unobserve(entry.target);
         }
       },
       { threshold: 0.2 }
     );
-    if (ref.current) observer.observe(ref.current);
+
+    observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
@@ -27,6 +33,7 @@ const AboutSection = () => {
             alt="12AM Stories bakery interior"
             className="w-full h-[400px] object-cover"
             loading="lazy"
+            decoding="async"
           />
         </div>
 
@@ -37,7 +44,10 @@ const AboutSection = () => {
             Where Every Slice Tells a Story
           </h2>
           <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-            At 12AM Stories, we don't just bake cakes — we craft memories. From birthdays to special surprises, every dessert is made with love and premium ingredients. Our passion for perfection is evident in every layer, every swirl, and every bite. We believe that the finest ingredients combined with artisan skill create something truly unforgettable.
+            At 12AM Stories, we don&apos;t just bake cakes — we craft memories. From birthdays to
+            special surprises, every dessert is made with love and premium ingredients. Our passion
+            for perfection is evident in every layer, every swirl, and every bite. We believe that
+            the finest ingredients combined with artisan skill create something truly unforgettable.
           </p>
         </div>
       </div>

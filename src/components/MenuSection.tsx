@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
-import redVelvetImg from "@/assets/red-velvet-cake.jpg";
-import chocolateImg from "@/assets/chocolate-cake.jpg";
-import butterscotchImg from "@/assets/butterscotch-cake.jpg";
-import pineappleImg from "@/assets/pineapple-cake.jpg";
-import cheesecakeImg from "@/assets/cheesecake.jpg";
-import mousseImg from "@/assets/mousse.jpg";
-import croissantsImg from "@/assets/croissants.jpg";
-import garlicBreadImg from "@/assets/garlic-bread.jpg";
-import pastryImg from "@/assets/pastries.jpg";
-import designerImg from "@/assets/designer-cake.jpg";
+import redVelvetImg from "@/assets/products/IMG_1378.JPG";
+import chocolateImg from "@/assets/products/IMG_1382.JPG";
+import butterscotchImg from "@/assets/products/IMG_1387.JPG";
+import pineappleImg from "@/assets/products/IMG_1389.JPG";
+import cheesecakeImg from "@/assets/products/IMG_1390.JPG";
+import mousseImg from "@/assets/products/IMG_1391.JPG";
+import croissantsImg from "@/assets/products/IMG_1392.JPG";
+import garlicBreadImg from "@/assets/products/IMG_1393.JPG";
+import pastryImg from "@/assets/products/IMG_1394.JPG";
+import designerImg from "@/assets/products/IMG_1395.JPG";
 
 interface MenuItem {
   name: string;
@@ -55,8 +55,15 @@ const categories: { label: string; emoji: string; items: MenuItem[] }[] = [
   },
 ];
 
+// Pre-build WhatsApp URLs once – avoids re-encoding on every render
+const WA_BASE = "https://wa.me/919082672306?text=";
+const getOrderUrl = (name: string) =>
+  `${WA_BASE}${encodeURIComponent(`Hi 12AM Stories, I want to order ${name}`)}`;
+
 const MenuSection = () => {
   const [active, setActive] = useState(0);
+
+  const handleTab = useCallback((i: number) => setActive(i), []);
 
   return (
     <section id="menu" className="py-20 md:py-28 bg-secondary">
@@ -67,16 +74,17 @@ const MenuSection = () => {
         </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
+        <div className="flex flex-wrap justify-center gap-3 mb-10" role="tablist">
           {categories.map((cat, i) => (
             <button
               key={cat.label}
-              onClick={() => setActive(i)}
-              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
-                active === i
+              role="tab"
+              aria-selected={active === i}
+              onClick={() => handleTab(i)}
+              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${active === i
                   ? "bg-accent text-accent-foreground shadow-md"
                   : "bg-card text-muted-foreground hover:bg-muted"
-              }`}
+                }`}
             >
               {cat.emoji} {cat.label}
             </button>
@@ -96,6 +104,7 @@ const MenuSection = () => {
                   alt={item.name}
                   className="w-full h-full object-cover transition-transform duration-500"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="p-5">
@@ -105,7 +114,7 @@ const MenuSection = () => {
                 </div>
                 <p className="text-muted-foreground text-xs mb-4 leading-relaxed">{item.description}</p>
                 <a
-                  href={`https://wa.me/919082672306?text=Hi%2012AM%20Stories,%20I%20want%20to%20order%20${encodeURIComponent(item.name)}`}
+                  href={getOrderUrl(item.name)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block w-full text-center px-4 py-2 rounded-full bg-accent text-accent-foreground text-xs font-medium hover:brightness-110 transition-all"
