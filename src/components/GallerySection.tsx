@@ -1,24 +1,26 @@
 import { useState, useCallback } from "react";
 import { X } from "lucide-react";
 
-import img1 from "@/assets/products/IMG_1396.JPG";
-import img2 from "@/assets/products/IMG_1397.JPG";
-import img3 from "@/assets/products/IMG_1398.JPG";
-import img4 from "@/assets/products/IMG_1399.JPG";
-import img5 from "@/assets/products/IMG_1400.JPG";
-import img6 from "@/assets/products/IMG_1401.JPG";
-import img7 from "@/assets/products/IMG_1402.JPG";
-import img8 from "@/assets/products/IMG_1403.JPG";
-import img9 from "@/assets/products/IMG_1404.JPG";
-import img10 from "@/assets/products/IMG_1406.JPG";
-import img11 from "@/assets/products/IMG_1407.JPG";
-import img12 from "@/assets/products/IMG_1408.JPG";
-import img13 from "@/assets/products/IMG_1409.JPG";
-import img14 from "@/assets/products/IMG_1411.JPG";
+import img9 from "@/assets/products/9.png";
+import img10 from "@/assets/products/10.png";
+import img12 from "@/assets/products/12.png";
+import blackForestImg from "@/assets/products/Black Forest.png";
+import blueberryMouseImg from "@/assets/products/Blueberry cheese mouse cup.png";
+import butterscotchImg from "@/assets/products/Butterscotch chocolate cake.png";
+import cheeseBiscuitImg from "@/assets/products/Cheese biscuit 12AM SPECIAL.png";
+import creamyChocolateImg from "@/assets/products/Creamy chocolate cake.png";
+import lotusBiscoffImg from "@/assets/products/Lotus biscoff cheese cup.png";
+import mixFruitJellyImg from "@/assets/products/Mix fruit jelly cake.png";
+import nanKataiImg from "@/assets/products/Nan katai.png";
+import pineappleCakeImg from "@/assets/products/Pineapple cake.png";
+import royalChocolateImg from "@/assets/products/Royal chocolate cake.png";
+import shrewsburyImg from "@/assets/products/Shrewsbury.png";
+import vanillaChocolateImg from "@/assets/products/Vannila chocolate cake.png";
 
 const images = [
-  img1, img2, img3, img4, img5, img6, img7,
-  img8, img9, img10, img11, img12, img13, img14,
+  blackForestImg, blueberryMouseImg, butterscotchImg, cheeseBiscuitImg, creamyChocolateImg,
+  lotusBiscoffImg, mixFruitJellyImg, nanKataiImg, pineappleCakeImg, royalChocolateImg,
+  shrewsburyImg, vanillaChocolateImg, img9, img10, img12
 ];
 
 const GallerySection = () => {
